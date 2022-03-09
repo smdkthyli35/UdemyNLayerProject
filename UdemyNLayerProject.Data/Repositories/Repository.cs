@@ -11,15 +11,14 @@ namespace UdemyNLayerProject.Data.Repositories
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext _context;
+        protected readonly DbContext _context;
         private readonly DbSet<TEntity> _dbSet;
 
-        public Repository(DbContext context, DbSet<TEntity> dbSet)
+        public Repository(DbContext context)
         {
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
-
 
         public async Task AddAsync(TEntity entity)
         {
