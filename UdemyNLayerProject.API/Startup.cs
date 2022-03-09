@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyNLayerProject.Core.UnitOfWorks;
+using UdemyNLayerProject.Data;
+using UdemyNLayerProject.Data.UnitOfWorks;
 
 namespace UdemyNLayerProject.API
 {
@@ -28,6 +32,17 @@ namespace UdemyNLayerProject.API
         {
 
             services.AddControllers();
+
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionStrings:SqlConStr"].ToString(), o =>
+                {
+                    o.MigrationsAssembly("UdemyNLayerProject.Data");
+                });
+            });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UdemyNLayerProject.API", Version = "v1" });
