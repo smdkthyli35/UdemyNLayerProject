@@ -15,6 +15,7 @@ namespace UdemyNLayerProject.API.Mapping
             CreateMap<Category, CategoryDto>().ReverseMap();
             CreateMap<Category, CategoryWithProductDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Product, ProductWithCategoryDto>().ReverseMap();
         }
     }
 }
