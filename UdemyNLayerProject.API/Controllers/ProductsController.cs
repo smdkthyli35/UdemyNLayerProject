@@ -48,7 +48,6 @@ namespace UdemyNLayerProject.API.Controllers
             return Ok(_mapper.Map<ProductWithCategoryDto>(product));
         }
 
-        [ValidationFilter]
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {
