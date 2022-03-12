@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\UdemyNLayerProject.Data\UdemyNLayerProject.Data.csproj" />
+    <ProjectReference Include="..\UdemyNLayerProject.Service\UdemyNLayerProject.Service.csproj" />
   </ItemGroup>
 
 </Project>
