@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UdemyNLayerProject.API.Filters;
 using UdemyNLayerProject.Core.Repositories;
 using UdemyNLayerProject.Core.Services;
 using UdemyNLayerProject.Core.UnitOfWorks;
@@ -35,7 +36,7 @@ namespace UdemyNLayerProject.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
-
+            services.AddScoped<NotFoundFilter>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
