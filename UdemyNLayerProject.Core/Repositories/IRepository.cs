@@ -10,7 +10,7 @@ namespace UdemyNLayerProject.Core.Repositories
     public interface IRepository<TEntity> where TEntity : class
     {
         Task<TEntity> GetByIdAsync(int id);
-        Task<IEnumerable<TEntity>> GetAll();
+        Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IEnumerable<TEntity>> Where(Expression<Func<TEntity, bool>> predicate);
         Task AddAsync(TEntity entity);
