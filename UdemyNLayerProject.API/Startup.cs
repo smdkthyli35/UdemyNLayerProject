@@ -53,6 +53,11 @@ namespace UdemyNLayerProject.API
 
             services.AddControllers();
 
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "UdemyNLayerProject.API", Version = "v1" });
