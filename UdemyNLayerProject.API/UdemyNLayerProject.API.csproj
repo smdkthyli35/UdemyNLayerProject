@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\UdemyNLayerProject.Data\UdemyNLayerProject.Data.csproj" />
     <ProjectReference Include="..\UdemyNLayerProject.Service\UdemyNLayerProject.Service.csproj" />
   </ItemGroup>
