@@ -38,11 +38,34 @@ namespace UdemyNLayerProject.API.Controllers
             return Ok(_mapper.Map<CategoryDto>(category));
         }
 
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetWithProductsById(int id)
+        {
+            var category = await _categoryService.GetWithProductsByIdAsync(id);
+            return Ok(_mapper.Map<CategoryWithProductDto>(category));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Save(CategoryDto categoryDto)
         {
             var newCategory = await _categoryService.AddAsync(_mapper.Map<Category>(categoryDto));
             return Created(string.Empty, _mapper.Map<CategoryDto>(newCategory));
         }
+
+        [HttpPut]
+        public IActionResult Update(CategoryDto categoryDto)
+        {
+            var updatedCategory = _categoryService.Update(_mapper.Map<Category>(categoryDto));
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Remove(int id)
+        {
+            var deletedCategory = _categoryService.GetByIdAsync(id).Result;
+            _categoryService.Remove(deletedCategory);
+            return NoContent();
+        }
+
     }
 }
