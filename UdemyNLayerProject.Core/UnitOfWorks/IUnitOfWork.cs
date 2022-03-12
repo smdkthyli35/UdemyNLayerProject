@@ -11,6 +11,7 @@ namespace UdemyNLayerProject.Core.UnitOfWorks
     {
         IProductRepository Products { get; }
         ICategoryRepository Categories { get; }
+        IPersonRepository Persons { get; }
 
         Task CommitAsync();
         void Commit();

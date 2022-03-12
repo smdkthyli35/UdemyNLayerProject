@@ -41,6 +41,7 @@ namespace UdemyNLayerProject.API
             services.AddScoped(typeof(IService<>), typeof(Service.Services.Service<>));
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IPersonService, PersonService>();
 
             services.AddDbContext<AppDbContext>(options =>
             {

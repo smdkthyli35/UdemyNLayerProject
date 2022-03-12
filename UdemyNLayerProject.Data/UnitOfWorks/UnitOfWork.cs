@@ -14,6 +14,7 @@ namespace UdemyNLayerProject.Data.UnitOfWorks
         private readonly AppDbContext _context;
         private ProductRepository _productRepository;
         private CategoryRepository _categoryRepository;
+        private PersonRepository _personRepository;
 
         public UnitOfWork(AppDbContext appDbContext)
         {
@@ -23,6 +24,8 @@ namespace UdemyNLayerProject.Data.UnitOfWorks
         public IProductRepository Products => _productRepository = _productRepository ?? new ProductRepository(_context);
 
         public ICategoryRepository Categories => _categoryRepository = _categoryRepository ?? new CategoryRepository(_context);
+
+        public IPersonRepository Persons => _personRepository = _personRepository ?? new PersonRepository(_context);
 
         public void Commit()
         {
