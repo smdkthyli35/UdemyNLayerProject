@@ -9,21 +9,21 @@ using UdemyNLayerProject.Web.DTOs;
 
 namespace UdemyNLayerProject.Web.Controllers
 {
-    public class ProductsController : Controller
+    public class PersonsController : Controller
     {
-        private readonly ProductApiService _productApiService;
+        private readonly PersonApiService _personApiService;
         private readonly IMapper _mapper;
 
-        public ProductsController(ProductApiService productApiService, IMapper mapper)
+        public PersonsController(PersonApiService personApiService, IMapper mapper)
         {
-            _productApiService = productApiService;
+            _personApiService = personApiService;
             _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            var products = await _productApiService.GetAllAsync();
-            return View(_mapper.Map<ProductDto>(products));
+            var people = await _personApiService.GetAllAsync();
+            return View(_mapper.Map<PersonDto>(people));
         }
 
         public IActionResult Create()
@@ -32,29 +32,29 @@ namespace UdemyNLayerProject.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ProductDto productDto)
+        public async Task<IActionResult> Create(PersonDto personDto)
         {
-            await _productApiService.AddAsync(productDto);
+            await _personApiService.AddAsync(personDto);
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Update(int id)
         {
-            var product = await _productApiService.GetByIdAsync(id);
-            return View(_mapper.Map<ProductDto>(product));
+            var person = await _personApiService.GetByIdAsync(id);
+            return View(_mapper.Map<PersonDto>(person));
         }
 
-        public async Task<IActionResult> Update(ProductDto productDto)
+        [HttpPost]
+        public async Task<IActionResult> Update(PersonDto personDto)
         {
-            await _productApiService.Update(productDto);
+            await _personApiService.Update(personDto);
             return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> Delete(int id)
         {
-            await _productApiService.Remove(id);
+            await _personApiService.Remove(id);
             return RedirectToAction("Index");
         }
-
     }
 }
