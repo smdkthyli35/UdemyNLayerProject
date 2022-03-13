@@ -33,7 +33,12 @@ namespace UdemyNLayerProject.Web
 
             services.AddHttpClient<ProductApiService>(opt =>
             {
-                opt.BaseAddress = new Uri(Configuration.GetConnectionString("baseUrl"));
+                opt.BaseAddress = new Uri(Configuration["baseUrl"]);
+            });
+
+            services.AddHttpClient<PersonApiService>(opt =>
+            {
+                opt.BaseAddress = new Uri(Configuration["baseUrl"]);
             });
 
             services.AddScoped<NotFoundFilter>();
