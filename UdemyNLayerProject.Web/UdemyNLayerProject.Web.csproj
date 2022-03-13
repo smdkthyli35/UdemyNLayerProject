@@ -10,9 +10,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\UdemyNLayerProject.Data\UdemyNLayerProject.Data.csproj" />
-    <ProjectReference Include="..\UdemyNLayerProject.Service\UdemyNLayerProject.Service.csproj" />
-  </ItemGroup>
-
 </Project>
