@@ -63,5 +63,20 @@ namespace UdemyNLayerProject.Web.ApiService
                 return null;
             }
         }
+
+        public async Task<bool> Update(CategoryDto categoryDto)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(categoryDto), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync("categories", stringContent);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
